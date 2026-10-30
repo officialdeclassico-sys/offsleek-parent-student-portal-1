@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/offsleek-parent-student-portal-v1/',
+    base: '/offsleek-parent-student-portal-1/',
 
     plugins: [react(), tailwindcss()],
 
