@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { MobileFrame } from './components/MobileFrame';
 import { LoginScreen } from './components/LoginScreen';
 import { ParentDashboardView, ScreenType } from './components/ParentDashboardView';
 import { StudentDashboardView } from './components/StudentDashboardView';
@@ -129,9 +128,11 @@ const PortalMain: React.FC = () => {
 
   if (!user) {
     return (
-      <MobileFrame>
-        <LoginScreen />
-      </MobileFrame>
+      <div className="min-h-screen w-screen bg-neutral-950 text-neutral-100 flex flex-col items-center justify-center p-0 sm:py-4 sm:px-2 font-sans selection:bg-black selection:text-white">
+        <div className="w-full h-screen sm:h-[844px] sm:max-h-[95vh] sm:max-w-[390px] bg-white text-black flex flex-col sm:rounded-[40px] sm:border-[8px] border-neutral-900 shadow-2xl overflow-hidden relative [transform:translateZ(0)]">
+          <LoginScreen />
+        </div>
+      </div>
     );
   }
 
@@ -145,8 +146,9 @@ const PortalMain: React.FC = () => {
   };
 
   return (
-    <MobileFrame>
-      <div className="h-full w-full bg-white text-black flex flex-col relative min-h-0 selection:bg-black selection:text-white overflow-hidden">
+    <div className="min-h-screen w-screen bg-neutral-950 text-neutral-100 flex flex-col items-center justify-center p-0 sm:py-4 sm:px-2 font-sans selection:bg-black selection:text-white">
+      <div className="w-full h-screen sm:h-[844px] sm:max-h-[95vh] sm:max-w-[390px] bg-white text-black flex flex-col sm:rounded-[40px] sm:border-[8px] border-neutral-900 shadow-2xl overflow-hidden relative [transform:translateZ(0)]">
+        <div className="h-full w-full bg-white text-black flex flex-col relative min-h-0 selection:bg-black selection:text-white overflow-hidden">
         
         {/* Backend Error Banner (Safeguard 2) */}
         {error && (
@@ -325,7 +327,8 @@ const PortalMain: React.FC = () => {
         )}
 
       </div>
-    </MobileFrame>
+    </div>
+  </div>
   );
 };
 

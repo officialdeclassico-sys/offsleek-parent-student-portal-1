@@ -52,23 +52,13 @@ export const LoginScreen: React.FC = () => {
   return (
     <div className="h-full w-full bg-white text-black flex flex-col selection:bg-black selection:text-white px-5 sm:px-6 py-2 sm:py-3 font-sans box-border overflow-y-auto overflow-x-hidden">
       
-      {/* 1. Top Bar: Time, Dynamic Island, and Environment Mode Switcher */}
+      {/* 1. Top Bar: Time and Dynamic Island */}
       <div className="flex items-center justify-between text-xs text-neutral-800 shrink-0 h-6 mb-1">
         <span className="font-semibold text-xs tracking-tight tabular-nums">{formatISTClock(now)}</span>
         
         {/* Dynamic Island Pill (Center) */}
         <div className="w-20 h-4 bg-black rounded-full mx-auto hidden xs:block"></div>
-
-        {/* Demo / Production Environment Switcher */}
-        <button
-          type="button"
-          onClick={() => setIsDemoMode(!isDemoMode)}
-          className="text-[10px] px-2 py-0.5 rounded-full border border-neutral-300 bg-neutral-100 font-medium text-neutral-700 hover:bg-neutral-200 transition-colors flex items-center space-x-1"
-          title="Toggle between Demo Sandbox and Production Mode"
-        >
-          <span className={`w-1.5 h-1.5 rounded-full ${isDemoMode ? 'bg-emerald-500' : 'bg-blue-600'}`}></span>
-          <span>{isDemoMode ? 'Demo' : 'Prod'}</span>
-        </button>
+        <div className="w-10"></div>
       </div>
 
       {/* Main Content Area: Centered, Balanced, Unified Compact Flow */}
@@ -267,11 +257,6 @@ export const LoginScreen: React.FC = () => {
                 Contact your school
               </button>
             </p>
-            {isDemoMode && (
-              <p className="text-[10px] text-neutral-400 mt-0.5">
-                Demo Sandbox Active: Instant login enabled for multi-child testing
-              </p>
-            )}
           </div>
 
           {/* 5. Subtle, Elegant Brand Footer with Original Logo Icon */}
