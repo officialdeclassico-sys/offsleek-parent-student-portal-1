@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Base layout resets to ensure natural mobile and desktop scrolling */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom smooth scrollbar utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* OFFSLEEK Glossy Badge Continuous Animation */
+@keyframes subtle-badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.18));
+  }
+  50% {
+    transform: scale(1.045);
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
+  }
+}
+
+.animate-badge-pulse {
+  animation: subtle-badge-pulse 2.8s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-badge-pulse {
+    animation: none !important;
+    transform: none !important;
+  }
+}

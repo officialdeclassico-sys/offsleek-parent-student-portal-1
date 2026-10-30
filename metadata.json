@@ -1,0 +1,6 @@
+{
+  "name": "OFFSLEEK Parent & Student",
+  "description": "Dedicated mobile portal for parents and students with real-time attendance, fees, homework, marksheets, and secure authentication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
