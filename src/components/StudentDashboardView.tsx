@@ -25,6 +25,7 @@ import {
   getISTDateParts,
   useISTNow,
 } from '../utils/dateTime';
+import { resolveAssetUrl } from '../utils/assetUtils';
 
 interface AnnouncementItem {
   id: string;
@@ -70,9 +71,10 @@ export const StudentDashboardView: React.FC<{
   
   // High fidelity uniform portrait matching screenshot reference
   const uniformPhoto = 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=200&auto=format&fit=crop&q=80';
-  const studentAvatar = (currentStudent?.avatar && !currentStudent.avatar.includes('aarav_avatar.png')) 
+  const rawAvatar = (currentStudent?.avatar && !currentStudent.avatar.includes('aarav_avatar.png')) 
     ? currentStudent.avatar 
     : uniformPhoto;
+  const studentAvatar = resolveAssetUrl(rawAvatar);
 
   const schoolName = 'Greenwood International School';
   const schoolTagline = 'Learn • Grow • Belong';

@@ -18,6 +18,7 @@ import {
 import { Student } from '../types';
 import { VerifiedAvatarBadge } from './VerifiedAvatarBadge';
 import { formatISTDayAndDate, getISTGreeting, useISTNow } from '../utils/dateTime';
+import { resolveAssetUrl } from '../utils/assetUtils';
 
 export type ScreenType = 
   | 'dashboard' 
@@ -49,7 +50,7 @@ export const ParentDashboardView: React.FC<{
   const studentGrade = currentStudent?.grade || 'Class 6';
   const studentSection = currentStudent?.section || 'Section A';
   const studentRollNo = currentStudent?.rollNumber ? (currentStudent.rollNumber === '08' ? '6001' : currentStudent.rollNumber) : '6001';
-  const studentAvatar = currentStudent?.avatar || 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=200&auto=format&fit=crop&q=80';
+  const studentAvatar = resolveAssetUrl(currentStudent?.avatar || 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=200&auto=format&fit=crop&q=80');
 
   const schoolName = 'GREENWOOD INTERNATIONAL SCHOOL';
   const schoolTagline = 'Learn • Grow • Belong';
@@ -187,6 +188,9 @@ export const ParentDashboardView: React.FC<{
                 src={studentAvatar}
                 alt={studentName}
                 className="w-full h-full rounded-full object-cover border border-neutral-100"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=200&auto=format&fit=crop&q=80';
+                }}
               />
               <VerifiedAvatarBadge size="xs" />
             </div>
@@ -488,9 +492,12 @@ export const ParentDashboardView: React.FC<{
                     <div className="flex items-center space-x-3">
                       <div className="relative w-10 h-10 rounded-full shrink-0">
                         <img
-                          src={child.avatar}
+                          src={resolveAssetUrl(child.avatar)}
                           alt={child.name}
                           className="w-full h-full rounded-full object-cover border border-neutral-200"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=200&auto=format&fit=crop&q=80';
+                          }}
                         />
                         <VerifiedAvatarBadge size="xs" />
                       </div>
